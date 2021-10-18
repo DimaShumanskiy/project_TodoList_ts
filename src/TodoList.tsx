@@ -1,6 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType} from './App';
 import Button from "./components/Button";
+import InputWithButton from "./components/InputWithButton";
+import Input from './components/Input'
 
 export  type TaskType = {
     id: string
@@ -25,7 +27,10 @@ export function Todolist(props: PropsType) {
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
-    const addTask = () => {
+    // const addTaskHandlerForAddTitle = () => { // лишний код для дополнения не прохидит проверки
+    //     props.addTask(props.todolistID, title)
+    // }
+    const addTaskHandlerForAddTitle= () => {
         if (title.trim() !== "") {
             props.addTask(props.todolistID, title.trim());
             setTitle("");
@@ -33,17 +38,21 @@ export function Todolist(props: PropsType) {
             setError("Title is required");
         }
     }
-
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
+    const addTaskHandlerForEnter = () => {
+      props.addTask(props.todolistID,title)
     }
 
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
-        if (e.charCode === 13) {
-            addTask();
-        }
-    }
+    // const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    //     setTitle(e.currentTarget.value)
+    // }
+
+    // const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    //     setError(null);
+    //     if (e.charCode === 13) {
+    //         addTask();
+    //     }
+    // }
+
     const onClickHandlerForRemoveTodolist = () => props.removeTodolist(props.todolistID)
 
 
@@ -54,28 +63,31 @@ export function Todolist(props: PropsType) {
     const tsarFoo = (value: FilterValuesType) => { // делаем одну callback
         props.changeFilter(props.todolistID, value)
     }
-    // const tasksMap = ()=> {
-    //  props.removeTask(props.todolistID, props.tasks.id),
-    //  (e: ChangeEvent<HTMLInputElement>) => {
-    //     props.changeTaskStatus(props.todolistID, props.tasks.id, e.currentTarget.checked);
-    // } }
+
+    const onClickHandlerForRemove = (Tid: string) => {props.removeTask(props.todolistID, Tid)} // удаление таски в методе map (передаем t.id)
+
 
     return <div>
         <h3>{props.title}</h3>
         <Button callback={onClickHandlerForRemoveTodolist} name={'X'}/>
-        <div>
-            <input value={title}
-                   onChange={onChangeHandler}
-                   onKeyPress={onKeyPressHandler}
-                   className={error ? "error" : ""}
-            />
-            <button onClick={addTask}>+</button>
-            {error && <div className="error-message">{error}</div>}
-        </div>
+        {/*<div>*/}
+        {/*    <input value={title}*/}
+        {/*           onChange={onChangeHandler}*/}
+        {/*           onKeyPress={onKeyPressHandler}*/}
+        {/*           className={error ? "error" : ""}*/}
+        {/*    />*/}
+        {/*    <button onClick={addTask}>+</button>*/}
+        {/*    {error && <div className="error-message">{error}</div>}*/}
+        {/*</div>*/}
+        {/*<InputWithButton addTask={props.addTask} todolistID={props.todolistID}/>*/}
+
+        <Input title={title} setTitle={setTitle} addTask={addTaskHandlerForEnter}/>
+        <Button callback={addTaskHandlerForAddTitle} name={'+'} />
+
         <ul>
             {
                 props.tasks.map(t => {
-                    const onClickHandlers = () => props.removeTask(props.todolistID, t.id)
+                    // const onClickHandlers = () => props.removeTask(props.todolistID, t.id)
                     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         props.changeTaskStatus(props.todolistID, t.id, e.currentTarget.checked);
                     }
@@ -85,7 +97,7 @@ export function Todolist(props: PropsType) {
                                onChange={onChangeHandler}
                                checked={t.isDone}/>
                         <span>{t.title}</span>
-                        <Button callback={onClickHandlers} name={'x'}/>
+                        <Button callback={() => onClickHandlerForRemove(t.id)} name={'x'}/>
                     </li>
                 })
             }

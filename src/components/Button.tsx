@@ -11,7 +11,9 @@ const Button = (props: propsType) => {
         props.callback()
     }
     return (
-        <button onClick={onClickHandler} className={props.style}>{props.name}</button>
+        <button onClick={onClickHandler}
+                className={props.style}
+        >{props.name}</button>
     );
 };
 
