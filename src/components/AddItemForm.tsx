@@ -1,18 +1,16 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
-
-type propsType = {
-    addTask: (todolistID:string, title:string) => void
-    todolistID: string
+type PropsType= {
+    callback:(title: string ) => void
 }
-
-const InputWithButton = (props: propsType) => {
+const AddItemForm = (props: PropsType) => {
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
     const addTask = () => {
-        if (title.trim() !== "") {
-            props.addTask(props.todolistID, title.trim());
+        let newTitle = title.trim();
+        if (newTitle !== "") {
+            props.callback(newTitle);
             setTitle("");
         } else {
             setError("Title is required");
@@ -22,15 +20,15 @@ const InputWithButton = (props: propsType) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
+
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null);
         if (e.charCode === 13) {
             addTask();
         }
     }
-
-
-    return (<div>
+    return (
+        <div>
             <input value={title}
                    onChange={onChangeHandler}
                    onKeyPress={onKeyPressHandler}
@@ -39,6 +37,7 @@ const InputWithButton = (props: propsType) => {
             <button onClick={addTask}>+</button>
             {error && <div className="error-message">{error}</div>}
         </div>
-    )
-}
-export default InputWithButton
+    );
+};
+
+export default AddItemForm;
