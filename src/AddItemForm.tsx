@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import {Button, TextField} from "@mui/material";
+import {Box, Button, FormControl, IconButton, TextField} from '@material-ui/core';
+import {AddBox} from '@material-ui/icons';
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -8,14 +9,14 @@ type AddItemFormPropsType = {
 export function AddItemForm(props: AddItemFormPropsType) {
 
     let [title, setTitle] = useState("")
-    let [error, setError] = useState(false)
+    let [error, setError] = useState<string | null>(null)
 
     const addItem = () => {
         if (title.trim() !== "") {
             props.addItem(title);
             setTitle("");
         } else {
-            setError(true)
+            setError("Title is required");
         }
     }
 
@@ -24,34 +25,23 @@ export function AddItemForm(props: AddItemFormPropsType) {
     }
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(false);
+        setError(null);
         if (e.charCode === 13) {
             addItem();
         }
     }
 
     return <div>
-        {/*<input value={title}*/}
-        {/*       onChange={onChangeHandler}*/}
-        {/*       onKeyPress={onKeyPressHandler}*/}
-        {/*       className={error ? "error" : ""}*/}
-        {/*/>*/}
-        <TextField
-            error={error}
-            id="outlined-basic"
-            label="Title is required"
-            variant="outlined"
-            value={title}
-            onChange={onChangeHandler}
-            onKeyPress={onKeyPressHandler}
-            size="small"
-            className={error ? "error" : ""}
-
+        <TextField variant="outlined"
+                   error={!!error}
+                   value={title}
+                   onChange={onChangeHandler}
+                   onKeyPress={onKeyPressHandler}
+                   label="Title"
+                   helperText={error}
         />
-        {/*<button onClick={addItem}>+</button>*/}
-        <Button variant="contained"
-                style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
-                onClick={addItem}>+</Button>
-        {error && <div className="error-message">Title is required</div>}
+        <IconButton color="primary" onClick={addItem}>
+            <AddBox />
+        </IconButton>
     </div>
 }
