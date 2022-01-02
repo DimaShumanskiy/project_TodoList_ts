@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97863bc2-2a59-4310-a5a2-58701a044e6f" name="Changes" comment="todolistsAPI connect">
-      <change afterPath="$PROJECT_DIR$/src/app/app-reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ErrorSnackbar/ErrorSnackbar.tsx" afterDir="false" />
+    <list default="true" id="97863bc2-2a59-4310-a5a2-58701a044e6f" name="Changes" comment="error UI , disabled  btn">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/todolists-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +46,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
-    <property name="ts.external.directory.path" value="D:\ITink\frontEnd\Todolist_ts\project_TodoList_ts\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.start">
@@ -112,7 +105,9 @@
       <workItem from="1640104192550" duration="980000" />
       <workItem from="1640105326347" duration="2094000" />
       <workItem from="1640271898300" duration="7596000" />
-      <workItem from="1640280233490" duration="2244000" />
+      <workItem from="1640280233490" duration="2569000" />
+      <workItem from="1640283815287" duration="1664000" />
+      <workItem from="1640433793811" duration="37000" />
     </task>
     <task id="LOCAL-00001" summary="CreateTodolist GetTodolists">
       <created>1639330176303</created>
@@ -156,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640110539829</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="error UI , disabled  btn">
+      <created>1640282622806</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1640282622806</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +180,8 @@
     <MESSAGE value="thunk -- Middleware" />
     <MESSAGE value="thunk -- Middleware, todolistsAPI connect" />
     <MESSAGE value="todolistsAPI connect" />
-    <option name="LAST_COMMIT_MESSAGE" value="todolistsAPI connect" />
+    <MESSAGE value="error UI , disabled  btn" />
+    <option name="LAST_COMMIT_MESSAGE" value="error UI , disabled  btn" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
